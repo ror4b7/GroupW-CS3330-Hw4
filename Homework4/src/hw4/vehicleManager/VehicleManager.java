@@ -42,7 +42,16 @@ public class VehicleManager {
 
     public boolean addVehicle(Vehicle vehicle)
     {
-        
+        try
+        {
+
+        vehicleList.add(vehicle); 
+        return true; 
+        }
+        catch (Exception e)
+        {
+            return false; 
+        }
 
     }
 

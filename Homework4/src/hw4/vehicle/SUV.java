@@ -9,18 +9,23 @@ public class SUV  extends Vehicle
     }
     //Setting up my classes : Trey
     @Override
-    public abstract double calculateMaintenaceCost(double distance)
+    public double calculateMaintenaceCost(double distance)
     {
+        return distance * mass * (getCurrentYear()-modelYear) * cylinders * 0.001; 
+
+
     }
 
     //Setting up my classes : Trey
     @Override
-    public abstract double calculateFuelEfficiency(double distance, double fuelPrice)
+    public double calculateFuelEfficiency(double distance, double fuelPrice)
     {
+        return cylinders * gasTankCapacity * fuelPrice / distance * 0.05;
+        
     }
     //Setting up my classes : Trey
     @Override
-    public abstract void startEngine()
+    public void startEngine()
     {
         
     }

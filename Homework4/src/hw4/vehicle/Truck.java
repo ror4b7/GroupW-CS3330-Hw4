@@ -23,4 +23,12 @@ public class Truck  extends Vehicle
     public abstract void startEngine()
     {
     }
+    
+    // Truck Specific toString
+	@Override
+	public String toString() {
+		return "Truck," + brand + "," + make + "," + modelYear + "," + price
+				+ "," + color + "," + fuelType + "," + mileage + "," + mass
+				+ "," + cylinders + "," + gasTankCapacity + "," + startType;
+	}
 }

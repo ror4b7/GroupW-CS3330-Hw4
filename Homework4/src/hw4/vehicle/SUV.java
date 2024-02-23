@@ -9,7 +9,7 @@ public class SUV  extends Vehicle
     }
     //Setting up my classes : Trey
     @Override
-    public abstract double calculateMaintenanceCost(double distance)
+    public abstract double calculateMaintenaceCost(double distance)
     {
     }
 

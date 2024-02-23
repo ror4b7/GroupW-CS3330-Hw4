@@ -280,12 +280,12 @@ public class VehicleManager {
         ArrayList<Vehicle> costVehicle = new ArrayList<Vehicle>();
         double cost = 0;
         for(Vehicle vehicle: vehicleList) {
-            if(vehicle.calculateMaintenanceCost(distance)>cost) {
-                cost = vehicle.calculateMaintenanceCost(distance);
+            if(vehicle.calculateMaintenaceCost(distance)>cost) {
+                cost = vehicle.calculateMaintenaceCost(distance);
                 costVehicle = new ArrayList<Vehicle>();
                 costVehicle.add(vehicle);
             }
-            else if(vehicle.calculateMaintenanceCost(distance)==cost) {
+            else if(vehicle.calculateMaintenaceCost(distance)==cost) {
                 costVehicle.add(vehicle);
             }
         }

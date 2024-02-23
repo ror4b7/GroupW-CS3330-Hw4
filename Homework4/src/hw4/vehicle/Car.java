@@ -5,26 +5,29 @@ public class Car extends Vehicle{
         super(brand, make, modelYear, price, color, fuelType, mileage, mass, cylinders, gasTankCapacity, startType);
     }
 
-    //Setting up my classes : Trey
-    @Override
-    public abstract double calculateMaintenaceCost(double distance)
-    {
-    }
-
      //Setting up my classes : Trey
     @Override
-    public abstract double calculateFuelEfficiency(double distance, double fuelPrice)
+    public double calculateMaintenaceCost(double distance)
     {
-    }
 
-     //Setting up my classes : Trey
-    @Override
-    public abstract void startEngine()
-    {
+        return distance * mass * (getCurrentYear()-modelYear) * cylinders * 0.0005; 
         
     }
-    
-    // Car Specific toString
+
+     //Setting up my classes : Trey
+    @Override
+    public double calculateFuelEfficiency(double distance, double fuelPrice)
+    {
+        return cylinders * gasTankCapacity * fuelPrice / distance * 0.003;
+
+    }
+
+
+    public void startEngine()
+    {
+        System.out.println(StartMechanism.KEYSTART);  
+    }
+ 
 	@Override
 	public String toString() {
 		return "Car," + brand + "," + make + "," + modelYear + "," + price

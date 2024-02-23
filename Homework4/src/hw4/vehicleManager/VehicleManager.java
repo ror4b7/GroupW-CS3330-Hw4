@@ -115,28 +115,6 @@ public class VehicleManager {
                 return false; // An error occurred while writing to the file
             }
     }
-
-    // checks to see if a vehicle is of a certain type
-    private boolean isVehicleType(Vehicle v, Class clazz) {
-    	if(v.getClass().equals(clazz)) {
-    		return true;
-    	}
-    	return false;
-    }
-    
-    // gets the number of vehicles of a certain type (class)
-    public int getNumberOfVehiclesByType(Class clazz) {
-        int count = 0;
-        for (Vehicle v : vehicleList) {
-            if (isVehicleType(v, clazz)) {
-                count++;
-            }
-        }
-        return count;
-    }
-    
-    //This will display the information, including maintenance cost, fuel efficiency, and how the vehicle starts,
-    //of all the cars present in the vehicleList. If the vehicle is not found, then print an appropriate error message.
     
     public void displayAllVehicleInformation(){
     	
@@ -158,8 +136,24 @@ public class VehicleManager {
             System.out.println("No vehicles found.");
             return;
         }
+    	
+    	//Counter variable to track number of car instances
+    	int i = 0; 
+    	
+    	//Loop through vehicle List
+        for (Vehicle vehicle : vehicleList) {
+        	//Print vehicle info and increment i if the vehicle is an instance of Car
+        	if(vehicle instanceof Car){
+        	i++;
+            System.out.println(vehicle.toString());
+        	}
+        }
+        
+        //If there were no cars in the list, print an appropriate message
+        if(i == 0) {
+        	System.out.println("No Cars Were Found");
+        }
     }
-    
     
     public void displayAllTruckInformation() {
     	
@@ -168,6 +162,24 @@ public class VehicleManager {
             System.out.println("No vehicles found.");
             return;
         }
+    	
+    	//Counter variable to track number of Truck instances
+    	int i = 0; 
+    	
+    	//Loop through vehicle List
+        for (Vehicle vehicle : vehicleList) {
+        	//Print vehicle info and increment i if the vehicle is an instance of Truck
+        	if(vehicle instanceof Truck){
+        	i++;
+            System.out.println(vehicle.toString());
+        	}
+        }
+        
+        //If there were no Trucks in the list, print an appropriate message
+        if(i == 0) {
+        	System.out.println("No Trucks Were Found");
+        }
+
     }
     
     public void displayAllSUVInformation(){
@@ -176,6 +188,23 @@ public class VehicleManager {
     	if (vehicleList.isEmpty()) {
             System.out.println("No vehicles found.");
             return;
+        }
+    	
+    	//Counter variable to track number of SUV instances
+    	int i = 0; 
+    	
+    	//Loop through vehicle List
+        for (Vehicle vehicle : vehicleList) {
+        	//Print vehicle info and increment i if the vehicle is an instance of SUV
+        	if(vehicle instanceof SUV){
+        	i++;
+            System.out.println(vehicle.toString());
+        	}
+        }
+        
+        //If there were no SUVs in the list, print an appropriate message
+        if(i == 0) {
+        	System.out.println("No SUVs Were Found");
         }
     }
     
@@ -186,20 +215,36 @@ public class VehicleManager {
             System.out.println("No vehicles found.");
             return;
         }
+    	
+    	//Counter variable to track number of Motorbike instances
+    	int i = 0; 
+    	
+    	//Loop through vehicle List
+        for (Vehicle vehicle : vehicleList) {
+        	//Print vehicle info and increment i if the vehicle is an instance of Motorbike
+        	if(vehicle instanceof Motorbike){
+        	i++;
+            System.out.println(vehicle.toString());
+        	}
+        }
+        
+        //If there were no Motorbikes in the list, print an appropriate message
+        if(i == 0) {
+        	System.out.println("No Motorbikes Were Found");
+        }
     }
     
-    
-    //This will display the vehicle information, including maintenance cost, fuel efficiency, and how the vehicle starts, 
-    //of a Vehicle v which is present in the vehicleList. If the vehicle is not found, then print an appropriate error message
     public void displayVehicleInformation(Vehicle v){
+    	//If given vehicle exists
     	if(vehicleList.contains(v)) {
-    		
+    		//Print vehicle information
+            System.out.println(v.toString());
     	}
     	
+    	//If vehicle does not exist
     	else {
-    	
-    		Syso
-    		
+    		//Print error message
+    		System.out.println("Vehicle not Found.");
     	}
     }
 

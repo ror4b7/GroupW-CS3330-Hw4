@@ -1,10 +1,12 @@
 package hw4.main;
-	
+
+import hw4.vehicleManager.VehicleManager;
+
 public class Main {
 		
 	public static void main(String[] args) {
 		// Instantiate vehicleManager, perform operations based on the requirements.
-		VehicleManager vehicleManager = new VehicleManager();
+		VehicleManager vehicleManager = VehicleManager.getInstance();
 		
 		// Read vehicle data from the vehcileList.csv file and initialize objects.
 		vehicleManager.initializeStock();
@@ -25,7 +27,7 @@ public class Main {
 		vehicleManager.displayAllMotorBikeInformation();
 		
 		// Display specific vehicle information.
-		vehicleManager.displayVehicleInformation(Vehicle v);
+		//vehicleManager.displayVehicleInformation(Vehicle v);
 		
 	}
 	

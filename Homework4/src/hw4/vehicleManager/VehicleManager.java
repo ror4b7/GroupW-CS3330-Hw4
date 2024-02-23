@@ -20,7 +20,7 @@ public class VehicleManager {
     private final static double fuelPrice = 3.25;
     
     // Initializes an instance of VehicleManager
-    private VehicleManager() {
+    public VehicleManager() {
     	vehicleList = new ArrayList<Vehicle>();
     }
     

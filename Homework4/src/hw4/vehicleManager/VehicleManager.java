@@ -339,4 +339,25 @@ public class VehicleManager {
 
         return efficientVehicles;
     }
+
+    /*This function returns the vehicle(s) with the worst fuel efficiency considering
+     * the given distance and fuel price. They are returned in the form of an ArrayList.
+     */
+    public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice) {
+        ArrayList<Vehicle> efficientVehicles = new ArrayList<Vehicle>();
+        double efficiency = Integer.MAX_VALUE;
+
+        for(Vehicle vehicle: vehicleList) {
+            double newEfficiency = vehicle.calculateFuelEfficiency(distance, fuelPrice);
+            if(newEfficiency<efficiency) {
+                efficientVehicles = new ArrayList<Vehicle>();
+                efficientVehicles.add(vehicle);
+            }
+            else if(newEfficiency==efficiency) {
+                efficientVehicles.add(vehicle);
+            }
+        }
+
+        return efficientVehicles;
+    }
 }

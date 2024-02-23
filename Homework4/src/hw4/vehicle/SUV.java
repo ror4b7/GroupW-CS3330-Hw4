@@ -25,6 +25,12 @@ public class SUV  extends Vehicle
         
     }
 
-
+    // SUV specific toString
+	@Override
+	public String toString() {
+		return "SUV," + brand + "," + make + "," + modelYear + "," + price
+				+ "," + color + "," + fuelType + "," + mileage + "," + mass
+				+ "," + cylinders + "," + gasTankCapacity + "," + startType;
+	}
     
 }

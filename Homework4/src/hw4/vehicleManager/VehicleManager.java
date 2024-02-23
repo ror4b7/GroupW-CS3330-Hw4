@@ -1,13 +1,139 @@
 package hw4.vehicleManager;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import hw4.vehicle.*;;
+import java.util.Scanner;
+import hw4.vehicle.*;
 
 public class VehicleManager {
-
+	
+	// Variables
+	private static final VehicleManager INSTANCE = new VehicleManager(); // Instantiates the VehicleManager instance
     private ArrayList<Vehicle> vehicleList; 
-    private String vehicleFilePath; 
+    private final static String vehicleFilePath = "vehicleList.csv";
+    private final static double distance = 300;
+    private final static double fuelPrice = 3.25;
     
+    // Initializes an instance of VehicleManager
+    private VehicleManager() {
+    	vehicleList = new ArrayList<Vehicle>();
+    }
+    
+    // Provides the user with a way to get the instance 
+    public static VehicleManager getInstance() {
+        return INSTANCE;
+    }
+    
+    
+    // Don't think we need this one anymore after the assignment correction
+//    public boolean readFromFile(String FileName) {
+//    	
+//    }
+    
+    
+    // Initializes the vehicleList with vehicles from vehicleList.csv
+    public boolean initializeStock() {
+    	
+        try {
+            // Open the vehicleList.csv file for reading
+            Scanner fileIn = new Scanner(new FileInputStream(vehicleFilePath));
+            
+            // Read through the file line by line
+            while (fileIn.hasNextLine()) {
+                String line = fileIn.nextLine();
+                // Split each line into parts based on commas
+                String[] tokens = line.split(",");
+                
+                // The first token indicates the type of vehicle
+                String vehicleType = tokens[0];
+                
+                // Determine the vehicle type and create corresponding vehicle instance
+                switch (vehicleType) {
+                    case "Car":
+                        // Create and add a new Car to vehicleList
+                        vehicleList.add(new Car(tokens[1], tokens[2], Long.parseLong(tokens[3]), Double.parseDouble(tokens[4]), VehicleColor.valueOf(tokens[5].toUpperCase()), FuelType.valueOf(tokens[6].toUpperCase()), Double.parseDouble(tokens[7]), Double.parseDouble(tokens[8]),Integer.parseInt(tokens[9]),Double.parseDouble(tokens[10]), StartMechanism.valueOf(tokens[11])));
+                        break;
+                    case "Truck":
+                        // Create and add a new Truck to vehicleList
+                    	vehicleList.add(new Truck(tokens[1], tokens[2], Long.parseLong(tokens[3]), Double.parseDouble(tokens[4]), VehicleColor.valueOf(tokens[5].toUpperCase()), FuelType.valueOf(tokens[6].toUpperCase()), Double.parseDouble(tokens[7]), Double.parseDouble(tokens[8]),Integer.parseInt(tokens[9]),Double.parseDouble(tokens[10]), StartMechanism.valueOf(tokens[11])));
+                        break;
+                    case "SUV":
+                        // Create and add a new  SUV to vehicleList
+                    	vehicleList.add(new SUV(tokens[1], tokens[2], Long.parseLong(tokens[3]), Double.parseDouble(tokens[4]), VehicleColor.valueOf(tokens[5].toUpperCase()), FuelType.valueOf(tokens[6].toUpperCase()), Double.parseDouble(tokens[7]), Double.parseDouble(tokens[8]),Integer.parseInt(tokens[9]),Double.parseDouble(tokens[10]), StartMechanism.valueOf(tokens[11])));
+                        break;
+                    case "Motorbike":
+                        // Create and add a new Motorbike to vehicleList
+                    	vehicleList.add(new Motorbike(tokens[1], tokens[2], Long.parseLong(tokens[3]), Double.parseDouble(tokens[4]), VehicleColor.valueOf(tokens[5].toUpperCase()), FuelType.valueOf(tokens[6].toUpperCase()), Double.parseDouble(tokens[7]), Double.parseDouble(tokens[8]),Integer.parseInt(tokens[9]),Double.parseDouble(tokens[10]), StartMechanism.valueOf(tokens[11])));
+                        break;
+                }
+            }
+                        
+            // Successfully initialized the stock, return true
+            fileIn.close();
+            return true;
+        } catch (FileNotFoundException e) {
+            // File not found, return false to indicate failure
+            return false;
+        }
+    	
+    }
+    
+    // Saves the vehicleList to vehicleList.csv
+    public boolean saveVehicleList() {
+    	
+            String headerLine = null;
 
+            // Read the header line from the file
+            try (Scanner fileIn = new Scanner(new FileInputStream(vehicleFilePath))) {
+                if (fileIn.hasNextLine()) {
+                    headerLine = fileIn.nextLine(); // Read the first line (header)
+                }
+            } catch (FileNotFoundException e) {
+                // 
+                return false;
+            }
+
+            // overwrite the file
+            try (PrintWriter fileOut = new PrintWriter(new FileOutputStream(vehicleFilePath, false))) {
+                // just makes sure that the header is the first line in the file
+            	if (headerLine != null) {
+                    fileOut.println(headerLine); // Write the original header back
+                }
+
+                // Iterate over the vehicleList and write each item to the file
+                for (Vehicle vehicle : vehicleList) {
+                    String line = vehicle.toString();
+                    fileOut.println(line);
+                }
+                
+                return true; // Successfully saved the vehicleList
+            } catch (IOException e) {
+                return false; // An error occurred while writing to the file
+            }
+    }
+
+    // checks to see if a vehicle is of a certain type
+    private boolean isVehicleType(Vehicle v, Class clazz) {
+    	if(v.getClass().equals(clazz)) {
+    		return true;
+    	}
+    	return false;
+    }
+    
+    // gets the number of vehicles of a certain type (class)
+    public int getNumberOfVehiclesByType(Class clazz) {
+        int count = 0;
+        for (Vehicle v : vehicleList) {
+            if (isVehicleType(v, clazz)) {
+                count++;
+            }
+        }
+        return count;
+    }
 
 
 }

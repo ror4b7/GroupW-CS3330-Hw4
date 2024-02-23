@@ -6,6 +6,6 @@ public enum VehicleColor {
     BLUE,
     BROWN,
     WHITE,
-    YELL0W,
+    YELLOW,
     GRAY
 }

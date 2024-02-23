@@ -66,7 +66,7 @@ public class VehicleManager {
                         // Create and add a new  SUV to vehicleList
                     	vehicleList.add(new SUV(tokens[1], tokens[2], Long.parseLong(tokens[3]), Double.parseDouble(tokens[4]), VehicleColor.valueOf(tokens[5].toUpperCase()), FuelType.valueOf(tokens[6].toUpperCase()), Double.parseDouble(tokens[7]), Double.parseDouble(tokens[8]),Integer.parseInt(tokens[9]),Double.parseDouble(tokens[10]), StartMechanism.valueOf(tokens[11])));
                         break;
-                    case "Motorbike":
+                    case "MotorBike":
                         // Create and add a new Motorbike to vehicleList
                     	vehicleList.add(new Motorbike(tokens[1], tokens[2], Long.parseLong(tokens[3]), Double.parseDouble(tokens[4]), VehicleColor.valueOf(tokens[5].toUpperCase()), FuelType.valueOf(tokens[6].toUpperCase()), Double.parseDouble(tokens[7]), Double.parseDouble(tokens[8]),Integer.parseInt(tokens[9]),Double.parseDouble(tokens[10]), StartMechanism.valueOf(tokens[11])));
                         break;
@@ -322,7 +322,7 @@ public class VehicleManager {
     /*This function returns the vehicle(s) with the greatest fuel efficiency considering
      * the given distance and fuel price. They are returned in the form of an ArrayList.
      */
-    public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice) {
+    public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice) {
         ArrayList<Vehicle> efficientVehicles = new ArrayList<Vehicle>();
         double efficiency = 0;
 
@@ -331,6 +331,7 @@ public class VehicleManager {
             if(newEfficiency>efficiency) {
                 efficientVehicles = new ArrayList<Vehicle>();
                 efficientVehicles.add(vehicle);
+                efficiency = newEfficiency; 
             }
             else if(newEfficiency==efficiency) {
                 efficientVehicles.add(vehicle);
@@ -343,16 +344,19 @@ public class VehicleManager {
     /*This function returns the vehicle(s) with the worst fuel efficiency considering
      * the given distance and fuel price. They are returned in the form of an ArrayList.
      */
-    public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice) {
+    public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice) {
         ArrayList<Vehicle> efficientVehicles = new ArrayList<Vehicle>();
         double efficiency = Integer.MAX_VALUE;
 
         for(Vehicle vehicle: vehicleList) {
             double newEfficiency = vehicle.calculateFuelEfficiency(distance, fuelPrice);
-            if(newEfficiency<efficiency) {
+            if(newEfficiency<efficiency) 
+            {
                 efficientVehicles = new ArrayList<Vehicle>();
                 efficientVehicles.add(vehicle);
+                efficiency = newEfficiency; 
             }
+
             else if(newEfficiency==efficiency) {
                 efficientVehicles.add(vehicle);
             }

@@ -134,6 +134,140 @@ public class VehicleManager {
         }
         return count;
     }
+    
+    public void displayAllVehicleInformation(){
+    	
+    	//If vehicleList is empty, print an appropriate message
+    	if (vehicleList.isEmpty()) {
+            System.out.println("No vehicles found.");
+            return;
+        }
+        
+    	//Loop through vehicle List
+        for (Vehicle vehicle : vehicleList) {
+        	//Print the information of each vehicle
+            System.out.println(vehicle.toString());
+        }
+    }
+    
+    public void displayAllCarInformation() {
+    	
+    	//If vehicleList is empty, print an appropriate message
+    	if (vehicleList.isEmpty()) {
+            System.out.println("No vehicles found.");
+            return;
+        }
+    	
+    	//Counter variable to track number of car instances
+    	int i = 0; 
+    	
+    	//Loop through vehicle List
+        for (Vehicle vehicle : vehicleList) {
+        	//Print vehicle info and increment i if the vehicle is an instance of Car
+        	if(vehicle instanceof Car){
+        	i++;
+            System.out.println(vehicle.toString());
+        	}
+        }
+        
+        //If there were no cars in the list, print an appropriate message
+        if(i == 0) {
+        	System.out.println("No Cars Were Found");
+        }
+    }
+    
+    public void displayAllTruckInformation() {
+    	
+    	//If vehicleList is empty, print an appropriate message
+    	if (vehicleList.isEmpty()) {
+            System.out.println("No vehicles found.");
+            return;
+        }
+    	
+    	//Counter variable to track number of Truck instances
+    	int i = 0; 
+    	
+    	//Loop through vehicle List
+        for (Vehicle vehicle : vehicleList) {
+        	//Print vehicle info and increment i if the vehicle is an instance of Truck
+        	if(vehicle instanceof Truck){
+        	i++;
+            System.out.println(vehicle.toString());
+        	}
+        }
+        
+        //If there were no Trucks in the list, print an appropriate message
+        if(i == 0) {
+        	System.out.println("No Trucks Were Found");
+        }
+
+    }
+    
+    public void displayAllSUVInformation(){
+    	
+    	//If vehicleList is empty, print an appropriate message
+    	if (vehicleList.isEmpty()) {
+            System.out.println("No vehicles found.");
+            return;
+        }
+    	
+    	//Counter variable to track number of SUV instances
+    	int i = 0; 
+    	
+    	//Loop through vehicle List
+        for (Vehicle vehicle : vehicleList) {
+        	//Print vehicle info and increment i if the vehicle is an instance of SUV
+        	if(vehicle instanceof SUV){
+        	i++;
+            System.out.println(vehicle.toString());
+        	}
+        }
+        
+        //If there were no SUVs in the list, print an appropriate message
+        if(i == 0) {
+        	System.out.println("No SUVs Were Found");
+        }
+    }
+    
+    public void displayAllMotorBikeInformation() {	
+    	
+    	//If vehicleList is empty, print an appropriate message
+    	if (vehicleList.isEmpty()) {
+            System.out.println("No vehicles found.");
+            return;
+        }
+    	
+    	//Counter variable to track number of Motorbike instances
+    	int i = 0; 
+    	
+    	//Loop through vehicle List
+        for (Vehicle vehicle : vehicleList) {
+        	//Print vehicle info and increment i if the vehicle is an instance of Motorbike
+        	if(vehicle instanceof Motorbike){
+        	i++;
+            System.out.println(vehicle.toString());
+        	}
+        }
+        
+        //If there were no Motorbikes in the list, print an appropriate message
+        if(i == 0) {
+        	System.out.println("No Motorbikes Were Found");
+        }
+    }
+    
+    public void displayVehicleInformation(Vehicle v){
+    	//If given vehicle exists
+    	if(vehicleList.contains(v)) {
+    		//Print vehicle information
+            System.out.println(v.toString());
+    	}
+    	
+    	//If vehicle does not exist
+    	else {
+    		//Print error message
+    		System.out.println("Vehicle not Found");
+    	}
+    }
 
 
 }

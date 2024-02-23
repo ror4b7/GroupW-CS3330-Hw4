@@ -28,7 +28,7 @@ public abstract class Vehicle
     }
 
 
-    public abstract double calculateMaintenaceCost(double distance);
+    public abstract double calculateMaintenanceCost(double distance);
     public abstract double calculateFuelEfficiency(double distance, double fuelPrice);
     public abstract void startEngine();
 

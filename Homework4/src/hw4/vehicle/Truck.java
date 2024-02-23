@@ -9,7 +9,7 @@ public class Truck  extends Vehicle
 
     //Setting up my classes : Trey
     @Override
-    public abstract double calculateMaintenaceCost(double distance)
+    public abstract double calculateMaintenanceCost(double distance)
     {
     }
     //Setting up my classes : Trey

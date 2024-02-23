@@ -134,6 +134,74 @@ public class VehicleManager {
         }
         return count;
     }
+    
+    //This will display the information, including maintenance cost, fuel efficiency, and how the vehicle starts,
+    //of all the cars present in the vehicleList. If the vehicle is not found, then print an appropriate error message.
+    
+    public void displayAllVehicleInformation(){
+    	
+    	//If vehicleList is empty, print an appropriate message
+    	if (vehicleList.isEmpty()) {
+            System.out.println("No vehicles found.");
+            return;
+        }
+        
+        for (Vehicle vehicle : vehicleList) {
+            System.out.println(vehicle.toString());
+        }
+    }
+    
+    public void displayAllCarInformation() {
+    	
+    	//If vehicleList is empty, print an appropriate message
+    	if (vehicleList.isEmpty()) {
+            System.out.println("No vehicles found.");
+            return;
+        }
+    }
+    
+    
+    public void displayAllTruckInformation() {
+    	
+    	//If vehicleList is empty, print an appropriate message
+    	if (vehicleList.isEmpty()) {
+            System.out.println("No vehicles found.");
+            return;
+        }
+    }
+    
+    public void displayAllSUVInformation(){
+    	
+    	//If vehicleList is empty, print an appropriate message
+    	if (vehicleList.isEmpty()) {
+            System.out.println("No vehicles found.");
+            return;
+        }
+    }
+    
+    public void displayAllMotorBikeInformation() {	
+    	
+    	//If vehicleList is empty, print an appropriate message
+    	if (vehicleList.isEmpty()) {
+            System.out.println("No vehicles found.");
+            return;
+        }
+    }
+    
+    
+    //This will display the vehicle information, including maintenance cost, fuel efficiency, and how the vehicle starts, 
+    //of a Vehicle v which is present in the vehicleList. If the vehicle is not found, then print an appropriate error message
+    public void displayVehicleInformation(Vehicle v){
+    	if(vehicleList.contains(v)) {
+    		
+    	}
+    	
+    	else {
+    	
+    		Syso
+    		
+    	}
+    }
 
 
 }

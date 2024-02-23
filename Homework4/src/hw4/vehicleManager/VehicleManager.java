@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import hw4.vehicle.*;
 
@@ -270,4 +271,27 @@ public class VehicleManager {
     }
 
 
+    /*this function finds and returns the vehicle with the highest
+     * maintenance cost of the vehicles listed within the given distance.
+     * if multiple vehicles share the same cost, then one of them is 
+     * randomly selected.
+     */
+    public Vehicle getVehicleWithHighestMaintenanceCost(double distance) {
+        ArrayList<Vehicle> costVehicle = new ArrayList<Vehicle>();
+        double cost = 0;
+        for(Vehicle vehicle: vehicleList) {
+            if(vehicle.calculateMaintenaceCost(distance)>cost) {
+                cost = vehicle.calculateMaintenaceCost(distance);
+                costVehicle = new ArrayList<Vehicle>();
+                costVehicle.add(vehicle);
+            }
+            else if(vehicle.calculateMaintenaceCost(distance)==cost) {
+                costVehicle.add(vehicle);
+            }
+        }
+
+        Random random = new Random();
+        int newRandom = random.nextInt(costVehicle.size());
+        return costVehicle.get(newRandom);
+    }
 }

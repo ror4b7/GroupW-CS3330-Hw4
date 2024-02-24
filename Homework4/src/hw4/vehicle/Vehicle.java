@@ -1,5 +1,7 @@
 package hw4.vehicle;
 
+import java.time.Year;
+
 public abstract class Vehicle 
 {
     protected String brand; 
@@ -31,5 +33,10 @@ public abstract class Vehicle
     public abstract double calculateMaintenaceCost(double distance);
     public abstract double calculateFuelEfficiency(double distance, double fuelPrice);
     public abstract void startEngine();
+
+
+    public static int getCurrentYear() {
+        return Year.now().getValue();
+    }
 
 }

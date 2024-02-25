@@ -12,24 +12,28 @@ public class Main {
 		vehicleManager.initializeStock();
 
 		// Display all vehicle information.
+		System.out.println("All Vehicle Information:");
 		vehicleManager.displayAllVehicleInformation();
+		System.out.println("");
 		
 		// Display all car information.
+		System.out.println("All Car Information:");
 		vehicleManager.displayAllCarInformation();
+		System.out.println("");
 		
 		//Display all truck information
+		System.out.println("All Truck Information:");
 		vehicleManager.displayAllTruckInformation();
+		System.out.println("");
 		
 		//Display all SUV information
+		System.out.println("All SUV Information:");
 		vehicleManager.displayAllSUVInformation();
+		System.out.println("");
 		
 		// Display all motorbike information.
+		System.out.println("All Motorbike Information:");
 		vehicleManager.displayAllMotorBikeInformation();
-		
-		// Display specific vehicle information.
-		//vehicleManager.displayVehicleInformation(Vehicle v);
-
-		
 	
 	}
 	
